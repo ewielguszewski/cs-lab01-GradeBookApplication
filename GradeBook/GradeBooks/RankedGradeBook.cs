@@ -15,16 +15,26 @@ namespace GradeBook.GradeBooks
 
         public override char GetLetterGrade(double averageGrade)
         {
-            if (averageGrade >= 80)
+
+            if (Students.Count < 5)
+            {
+                throw new InvalidOperationException("Required at least 5 students");
+            }
+
+            var percentageOfTop = (int)Math.Ceiling(Students.Count * 0.2);
+            var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
+
+            if (averageGrade >= grades[percentageOfTop])
                 return 'A';
-            else if (averageGrade >= 60)
+            else if (averageGrade >= grades[percentageOfTop * 2])
                 return 'B';
-            else if (averageGrade >= 40)
+            else if (averageGrade >= grades[percentageOfTop * 3])
                 return 'C';
-            else if (averageGrade >= 20)
+            else if (averageGrade >= grades[percentageOfTop * 4])
                 return 'D';
             else
                 return 'F';
+
         }
     }
 }
