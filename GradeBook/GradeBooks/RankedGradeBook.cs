@@ -23,15 +23,18 @@ namespace GradeBook.GradeBooks
             }
 
             var percentageOfTop = (int)Math.Ceiling(Students.Count * 0.2);
+            var percentageOfTop2 = (int)Math.Ceiling(Students.Count * 0.4);
+            var percentageOfTop3 = (int)Math.Ceiling(Students.Count * 0.6);
+            var percentageOfTop4 = (int)Math.Ceiling(Students.Count * 0.8);
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
 
-            if (averageGrade >= grades[percentageOfTop])
+            if (averageGrade >= grades[percentageOfTop-1])
                 return 'A';
-            else if (averageGrade >= grades[percentageOfTop * 2])
+            else if (averageGrade >= grades[percentageOfTop2-1])
                 return 'B';
-            else if (averageGrade >= grades[percentageOfTop * 3])
+            else if (averageGrade >= grades[percentageOfTop3-1])
                 return 'C';
-            else if (averageGrade >= grades[percentageOfTop * 4])
+            else if (averageGrade >= grades[percentageOfTop4-1])
                 return 'D';
             else
                 return 'F';
