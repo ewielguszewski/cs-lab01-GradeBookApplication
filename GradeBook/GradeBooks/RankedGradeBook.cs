@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GradeBook.Enums;
 
 namespace GradeBook.GradeBooks
 {
@@ -10,7 +11,7 @@ namespace GradeBook.GradeBooks
     {
         public RankedGradeBook(string name, bool isWeight) : base(name, isWeight)
         {
-            Type = typeof(RankedGradeBook);
+            Type = GradeBookType.Ranked;
             IsWeighted = true;
         }
 
